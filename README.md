@@ -25,11 +25,11 @@
 | image           | string     | null: false                   |
 | name            | string     | null: false                   |
 | content         | text       | null: false                   |
-| category        | string     | null: false                   |
-| products_status | string     | null: false                   |
-| shipping_fee    | string     | null: false                   |
-| shipping_place  | string     | null: false                   |
-| shipping_days   | string     | null: false                   |
+| category_id     | integer    | null: false                   |
+| status_id       | integer    | null: false                   |
+| fee_id          | integer    | null: false                   |
+| area_id         | integer    | null: false                   |
+| days_id         | integer    | null: false                   |
 | price           | integer    | null: false                   |
 | user            | references | null: false, foreign_key: true|
 
