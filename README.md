@@ -59,7 +59,7 @@
 | prefectures | string     | null: false                    |
 | city        | string     | null: false                    |
 | address     | string     | null: false                    |
-| building    | string     | null: false                    |
+| building    | string     |                                |
 | tel         | string     | null: false                    |
 | buy         | references | null: false, foreign_key: true |
 
