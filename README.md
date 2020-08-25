@@ -42,6 +42,7 @@
 
 | Column    | Type       | Options                        |
 | ----------| ---------- | ------------------------------ |
+| user      | references | null: false, foreign_key: true |
 | item      | references | null: false, foreign_key: true |
 
 ### Association
@@ -59,7 +60,7 @@
 | city        | string     | null: false                    |
 | address     | string     | null: false                    |
 | building    | string     | null: false                    |
-| tel         | integer    | null: false                    |
+| tel         | string     | null: false                    |
 | buy         | references | null: false, foreign_key: true |
 
 ### Association
