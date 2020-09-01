@@ -12,4 +12,4 @@ function price() {
 
 }
 
-window.addEventListener("load", price);
+window.addEventListener('load', price);
