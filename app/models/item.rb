@@ -19,6 +19,7 @@ class Item < ApplicationRecord
     validates :area_id, numericality: { other_than: 0 } 
     validates :day_id, numericality: { other_than: 0 } 
     validates :price, inclusion: { in: 300..9999999 }
+    validates :user_id
   end
 
 end
