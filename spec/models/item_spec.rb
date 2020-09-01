@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Item, type: :model do
   before do
     user = FactoryBot.create(:user)
-    @item = FactoryBot.build(:item,user_id:user.id)
+    @item = FactoryBot.build(:item, user_id: user.id)
     @item.image = fixture_file_upload('public/images/test_image.png')
   end
 
@@ -26,29 +26,29 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Content can't be blank")
       end
       it 'category_idが0では登録不可' do
-        @item.category_id ='0'
+        @item.category_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 0")
+        expect(@item.errors.full_messages).to include('Category must be other than 0')
       end
       it 'status_idが0では登録不可' do
         @item.status_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status must be other than 0")
+        expect(@item.errors.full_messages).to include('Status must be other than 0')
       end
       it 'fee_idが0では登録不可' do
         @item.fee_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Fee must be other than 0")
+        expect(@item.errors.full_messages).to include('Fee must be other than 0')
       end
       it 'area_idが0では登録不可' do
-        @item.area_id ='0'
+        @item.area_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Area must be other than 0")
+        expect(@item.errors.full_messages).to include('Area must be other than 0')
       end
       it 'day_idが0では登録不可' do
         @item.day_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Day must be other than 0")
+        expect(@item.errors.full_messages).to include('Day must be other than 0')
       end
       it 'priceが空では登録不可' do
         @item.price = ''
@@ -56,14 +56,14 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it 'priceが300より小さければ登録不可' do
-        @item.price = "1"
+        @item.price = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it 'priceが9999999より大ければ登録不可' do
-        @item.price = "10000000"
+        @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
     end
   end
