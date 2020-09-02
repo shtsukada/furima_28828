@@ -178,7 +178,7 @@
       <%# //商品がない場合のダミー %>
       <li class='list'>
         <% @items.each do |item| %>
-        <%= link_to '#' do %>
+        <%= link_to item_path(item.id), method: :get do %>
         <%= image_tag item.image,  class: "item-img" if item.image.attached? %>
         <div class='item-info'>
           <h3 class='item-name'>

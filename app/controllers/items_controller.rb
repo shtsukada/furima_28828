@@ -2,14 +2,16 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: %i[index show]
 
   def index
-    @items = Item.all
+    @items = Item.includes(:user)
   end
 
   def new
     @item = Item.new
   end
 
-  def show; end
+  def show
+    @item = Item.find(params[:id])
+  end
 
   def edit; end
 
