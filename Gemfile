@@ -64,3 +64,7 @@ group :production do
 end
 
 gem 'devise'
+
+gem 'active_hash'
+gem 'image_processing', '~> 1.2'
+gem 'mini_magick'
