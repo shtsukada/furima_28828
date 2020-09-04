@@ -7,6 +7,7 @@ class Buy < ApplicationRecord
   with_options presence: true do
     validates :user
     validates :item
+    validates :token
   end
 
 end
