@@ -185,7 +185,7 @@
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" if item.image.attached? %>
           <%# 商品が売れていればsold outの表示 %>
-          <% if Buy.find_by(item_id:item.id) %>
+          <% if item.buy.present? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
