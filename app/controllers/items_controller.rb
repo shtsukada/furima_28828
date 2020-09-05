@@ -10,9 +10,11 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def show; end
+  def show
+  end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @item.update(item_params)
