@@ -23,7 +23,7 @@ RSpec.describe Item, type: :model do
       it 'nameが40文字より多いと登録不可' do
         @item.name = Faker::Name.initials(number: 50)
         @item.valid?
-        expect(@item.errors.full_messages).to include("Name is too long (maximum is 40 characters)")
+        expect(@item.errors.full_messages).to include('Name is too long (maximum is 40 characters)')
       end
       it 'contentが空では登録不可' do
         @item.content = ''
@@ -33,7 +33,7 @@ RSpec.describe Item, type: :model do
       it 'contentが1000文字より多いと登録不可' do
         @item.content = Faker::Name.initials(number: 1010)
         @item.valid?
-        expect(@item.errors.full_messages).to include("Content is too long (maximum is 1000 characters)")
+        expect(@item.errors.full_messages).to include('Content is too long (maximum is 1000 characters)')
       end
       it 'category_idが0では登録不可' do
         @item.category_id = '0'
