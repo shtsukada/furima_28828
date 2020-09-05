@@ -1,13 +1,14 @@
 class BuysController < ApplicationController
+
+  before_action :set_item, only: %i[index create]
+
   def index
-    @item = Item.find(params[:item_id])
     @buy = BuyAddress.new
     redirect_to root_path unless user_signed_in?
     redirect_to root_path if current_user.id == @item.user_id
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @buy = BuyAddress.new(buy_params)
     if @buy.valid?
       pay_item
@@ -32,4 +33,9 @@ class BuysController < ApplicationController
       currency: 'jpy'
     )
   end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
 end
