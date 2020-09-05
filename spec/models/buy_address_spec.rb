@@ -60,9 +60,9 @@ RSpec.describe BuyAddress, type: :model do
       expect(@buyaddress.errors.full_messages).to include("Tel is too long (maximum is 11 characters)")
     end
     it 'telが半角のハイフンを含むと保存できないこと' do
-      @buyaddress.tel = '080-1234-5678'
+      @buyaddress.tel = '080-1234'
       @buyaddress.valid?
-      expect(@buyaddress.errors.full_messages).to include('Tel is too long (maximum is 11 characters)')
+      expect(@buyaddress.errors.full_messages).to include('Tel is invalid')
     end
   end
 end

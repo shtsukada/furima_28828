@@ -10,7 +10,7 @@ class BuyAddress
     validates :area_id, numericality: { other_than: 0 }
     validates :city
     validates :address
-    validates :tel, length: { maximum: 11 }
+    validates :tel,format: { with: /\A\d{11}\z/ }, length: { maximum: 11 }
   end
 
   def save
@@ -18,3 +18,4 @@ class BuyAddress
     Address.create(postal_code: postal_code, area_id: area_id, city: city, address: address, building: building, tel: tel, buy_id: @buy.id)
   end
 end
+
