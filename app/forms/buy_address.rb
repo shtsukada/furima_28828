@@ -10,7 +10,7 @@ class BuyAddress
     validates :area_id, numericality: { other_than: 0 }
     validates :city
     validates :address
-    validates :tel, format: { with: /\A\^\d{11}\z/ }
+    validates :tel, length: { maximum: 11 }
   end
 
   def save
