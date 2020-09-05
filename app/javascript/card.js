@@ -1,5 +1,6 @@
 const pay = () => {
   Payjp.setPublicKey(process.env.FURIMA_PUBLIC_KEY);
+  //  console.log(process.env);
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -8,17 +9,20 @@ const pay = () => {
     const formData = new FormData(formResult);
  
     const card = {
-      number: formData.get("card-number"),
-      cvc: formData.get("card-cvc"),
-      exp_month: formData.get("card-exp-month"),
-      exp_year: `20${formData.get("card-exp-year")}`,
-    };
+      number: formData.get("number"),
+      cvc: formData.get("cvc"),
+      exp_month: formData.get("exp_month"),
+      exp_year: `20${formData.get("exp_year")}`,
+    }
     Payjp.createToken(card, (status, response) => {
       if (status == 200) {
         const token = response.id;
         const renderDom = document.getElementById("charge-form");
         const tokenObj = `<input value=${token} type="hidden" name='token'>`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
+      //   alert("決済が完了しました。")
+      // }else{
+      //   alert("決済が失敗しました。")
       }
       document.getElementById("card-number").removeAttribute("name");
       document.getElementById("card-cvc").removeAttribute("name");

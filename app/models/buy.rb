@@ -4,10 +4,10 @@ class Buy < ApplicationRecord
   belongs_to :item
   has_one :address
 
-  with_options presence: true do
-    validates :user
-    validates :item
-    validates :token
-  end
+  # with_options presence: true do
+  #   validates :user_id
+  #   validates :item_id
+  #   validates :token
+  # end
 
 end

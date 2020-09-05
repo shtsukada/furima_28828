@@ -2,11 +2,13 @@ class BuysController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
-    @buy = Buy.new
+    @buy = BuyAddress.new
   end
 
   def create
-    @buy = Buy.new(buy_params)
+    @item = Item.find(params[:item_id])
+    @buy = BuyAddress.new(buy_params)
+    # binding.pry
     if @buy.valid?
       pay_item
       @buy.save
@@ -19,15 +21,15 @@ class BuysController < ApplicationController
    private
 
   def buy_params
-    params.require.(:buy).permit(:token).merge(item_id: price)
+    params.permit(:item_id, :token, :postal_code, :area_id, :city, :address, :building, :tel, :buy_id).merge(user_id: current_user.id)#.merge(price: @item.price)
   end
 
   def pay_item
     Payjp.api_key = ENV["FURIMA_SECRET_KEY"]
     Payjp::Charge.create(
-      amount: buy_params[:price],  # 商品の値段
-      card: buy_params[:token],    # カードトークン
-      currency:'jpy'                 # 通貨の種類(日本円)
+      amount: @item.price,
+      card: buy_params[:token],
+      currency:'jpy'
     )
   end
 

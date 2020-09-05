@@ -1,4 +1,5 @@
 function price() {
+  if (!document.getElementById("item-price")){ return false }
   const input_price =document.getElementById("item-price");
   const tax = 0.1;
   const profit = 1.0 - tax;
