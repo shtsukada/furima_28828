@@ -18,62 +18,62 @@ RSpec.describe Item, type: :model do
       it 'nameが空では登録不可' do
         @item.name = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Name can't be blank")
+        expect(@item.errors.full_messages).to include("商品名を入力してください")
       end
       it 'nameが40文字より多いと登録不可' do
         @item.name = Faker::Name.initials(number: 50)
         @item.valid?
-        expect(@item.errors.full_messages).to include('Name is too long (maximum is 40 characters)')
+        expect(@item.errors.full_messages).to include('商品名は40文字以内で入力してください')
       end
       it 'contentが空では登録不可' do
         @item.content = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Content can't be blank")
+        expect(@item.errors.full_messages).to include("商品の説明を入力してください")
       end
       it 'contentが1000文字より多いと登録不可' do
         @item.content = Faker::Name.initials(number: 1010)
         @item.valid?
-        expect(@item.errors.full_messages).to include('Content is too long (maximum is 1000 characters)')
+        expect(@item.errors.full_messages).to include('商品の説明は1000文字以内で入力してください')
       end
       it 'category_idが0では登録不可' do
         @item.category_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Category must be other than 0')
+        expect(@item.errors.full_messages).to include('カテゴリーは0以外の値にしてください')
       end
       it 'status_idが0では登録不可' do
         @item.status_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Status must be other than 0')
+        expect(@item.errors.full_messages).to include('商品の状態は0以外の値にしてください')
       end
       it 'fee_idが0では登録不可' do
         @item.fee_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Fee must be other than 0')
+        expect(@item.errors.full_messages).to include('配送料の負担は0以外の値にしてください')
       end
       it 'area_idが0では登録不可' do
         @item.area_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Area must be other than 0')
+        expect(@item.errors.full_messages).to include('発送元の地域は0以外の値にしてください')
       end
       it 'day_idが0では登録不可' do
         @item.day_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Day must be other than 0')
+        expect(@item.errors.full_messages).to include('発送までの日数は0以外の値にしてください')
       end
       it 'priceが空では登録不可' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include("販売価格を入力してください")
       end
       it 'priceが300より小さければ登録不可' do
         @item.price = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price is not included in the list')
+        expect(@item.errors.full_messages).to include('販売価格は一覧にありません')
       end
       it 'priceが9999999より大ければ登録不可' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price is not included in the list')
+        expect(@item.errors.full_messages).to include('販売価格は一覧にありません')
       end
     end
   end
